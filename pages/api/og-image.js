@@ -1,5 +1,5 @@
 // pages/api/og-image.js
-import { createCanvas } from 'canvas';
+import { createCanvas } from '@napi-rs/canvas';
 
 export default async function handler(req, res) {
   const { title } = req.query;
