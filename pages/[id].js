@@ -18,6 +18,8 @@ const Page = ({ id, ogImageUrl }) => {
         <meta name="twitter:title" content="Dynamic OG Image" />
         <meta name="twitter:description" content="This is a dynamically generated OG image." />
         <meta name="twitter:image" content={ogImageUrl} />
+        <meta property="twitter:image:width" content="1200" />
+        <meta property="twitter:image:height" content="600" />
       </Head>
       <div>
         <h1>Welcome to My Website</h1>
