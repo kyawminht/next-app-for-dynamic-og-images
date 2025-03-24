@@ -22,7 +22,7 @@ const Page = ({ id, ogImageUrl }) => {
       <div>
         <h1>Welcome to My Website</h1>
         <p>This page has a dynamically generated OG image.</p>
-        <img src={ogImageUrl} alt="Product Image" style={{ width: '100%', maxWidth: '600px' }} />
+        <p>Hello image </p>
       </div>
     </>
   );
