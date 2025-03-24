@@ -18,13 +18,11 @@ const Page = ({ id, ogImageUrl }) => {
         <meta name="twitter:title" content="Dynamic OG Image" />
         <meta name="twitter:description" content="This is a dynamically generated OG image." />
         <meta name="twitter:image" content={ogImageUrl} />
-        <meta property="twitter:image:width" content="1200" />
-        <meta property="twitter:image:height" content="600" />
       </Head>
       <div>
         <h1>Welcome to My Website</h1>
         <p>This page has a dynamically generated OG image.</p>
-        <p>Hello image </p>
+        <p>Hello image {id}</p>
       </div>
     </>
   );
@@ -33,14 +31,13 @@ const Page = ({ id, ogImageUrl }) => {
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
 
-  // Define your image URLs
-  const imageUrls = [
-    'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg', // First image
-    'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg', // Second image
-  ];
+  // Fetch data from the API
+  const res = await fetch('https://fakestoreapi.com/products');
+  const products = await res.json();
 
   // Select the image based on the `id`
-  const ogImageUrl = imageUrls[id - 1] || imageUrls[0]; // Default to the first image if `id` is invalid
+  const product = products.find((product) => product.id === parseInt(id));
+  const ogImageUrl = product ? product.image : 'https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg'; //fall back image
 
   return {
     props: {
